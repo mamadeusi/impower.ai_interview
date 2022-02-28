@@ -1,0 +1,64 @@
+7Be+d -> 5Li+a
+NAMELIST
+ &FRESCO hcm=0.1 rmatch=60 rintp=0.30 hnl=0.1 rnl=15.0 centre=0.0
+ jtmin=0.0 jtmax=50 absend= 0.0
+ thmin=0.00 thmax=180.00 thinc=1.00
+ it0=1 iter=1 nnu=36 chans=1 smats=2 xstabl=1
+ pel=1
+ elab(1) = 0.05 6.0 nlab=100/
+
+ &PARTITION namep='d' massp=2.00 zp=1
+            namet='7Be' masst=7.00 zt=4 qval=0.0 nex=1 /
+ &STATES jp=1 bandp=1 ep=0.0 cpot=1 jt=1.5 bandt=-1 et=0.0 /
+
+ &PARTITION namep='5Li' massp=5.00 zp=3
+            namet='a' masst=4.00 zt=2 qval=14.801 nex=3 /
+ &STATES jp=1.5 bandp=-1 ep= 0.0  cpot=2 jt=0   bandt=1 et=0.0 /
+ &STATES jp=0.5 bandp=-1 ep= 1.49 cpot=2 copyt=1 /
+ &STATES jp=1.5 bandp=1  ep=14.5  cpot=2 copyt=1 /
+ &partition /
+
+ &POT kp=1 ap=2.000 at=7.000 rc=1.2 /
+ &POT kp=1 type=1 p1=40.00 p2=1.2 p3=0.65 p4=10.0 p5=1.2 p6=0.500 /
+ &POT kp=2 ap=5.000 at=4.000 rc=1.2 /
+ &POT kp=2 type=1 p1=40.00 p2=1.2 p3=0.65 p4=10.0 p5=1.2 p6=0.500 /
+ &pot kp=3 At =   4.000   Ap =  7.000   Rc = 1.300 /
+ &pot kp=3 type=1 v =  91.000   rv =  1.290   av = 0.700 /
+ &pot kp=4 At =   3.000   Ap =  2.000   Rc = 1.300 /
+ &pot kp=4 type=1 v =  91.000   rv =  1.200   av = 0.700 /
+ &pot kp=5 At =  4.000    Ap =  2.000   Rc = 1.200 /
+ &pot kp=5 type=1 v =  50.000   rv =  1.200   av = 0.650
+                  w =  10.000   rw =  1.200   aw = 0.500 /
+ &pot /   ! END OF DEFINING POTENTIALS
+
+ &OVERLAP kn1=  1 ic1=2 ic2=1 in= 2
+    kind=0 nn= 2 l=1 sn= 0.5 j= 1.5
+    kbpot= 3 krpot= 0 be=  1.5871
+    isc= 1 ipc=1 nfl=  0 /
+
+ &OVERLAP kn1=  2 ic1=1 ic2=2 in= 1
+    kind=0 nn= 2 l=1 sn= 0.5 j= 1.5
+    kbpot= 4 krpot= 0 be=  16.66
+    isc= 1 ipc=1 nfl=  0 /
+
+ &OVERLAP kn1=  3 ic1=1 ic2=2 in= 1
+    kind=0 nn= 2 l=1 sn= 0.5 j= 0.5
+    kbpot= 4 krpot= 0 be=  15.17
+    isc= 1 ipc=1 nfl=  0 /
+ 
+ &OVERLAP kn1=  4 ic1=1 ic2=2 in= 1
+    kind=0 nn= 2 l=0 sn= 0.5 j= 0.5
+    kbpot= 4 krpot= 0 be=  2.16
+    isc= 1 ipc=1 nfl=  0 /
+
+ &overlap /   ! END OF DEFINING OVERLAPS
+
+ &COUPLING icto=-2 icfrom= 1 kind=7 ip1= 0 ip2=-1 ip3= 5 /
+   &cfp  in= 2 ib=  1 ia=  1 kn=  1  a=   1.000     /
+   &cfp  in= 1 ib=  1 ia=  1 kn=  2  a=   1.000     /
+   &cfp  in= 1 ib=  2 ia=  1 kn=  3  a=   1.000     /
+   &cfp  in= 1 ib=  3 ia=  1 kn=  4  a=   1.000     /
+ &cfp /
+ &COUPLING /
+
+! *******  END OF FRESCO INPUTS *******
